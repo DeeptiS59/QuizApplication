@@ -22,7 +22,7 @@ export class ResultComponent implements OnInit {
   {
     for(let i=0;i<this.quizJSON.questions.length;i++)
     {
-      let answerGiven=this.answers[i]>0;
+      let answerGiven=this.answers[i]>=0;
       if( answerGiven && this.quizJSON.questions[i].options[this.answers[i]].correct) 
       {
         this.totalScore+=10;
