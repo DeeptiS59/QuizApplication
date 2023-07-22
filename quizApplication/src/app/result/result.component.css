@@ -1,0 +1,13 @@
+.selectedOption
+{
+    background-color: yellow;
+}
+.correctOption
+{
+    background-color:  lightgreen;
+}
+.explanation 
+{
+    font-family: cursive;
+    font-style: italic;
+}

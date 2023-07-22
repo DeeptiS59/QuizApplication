@@ -1,0 +1,20 @@
+
+<b>Your final score is: {{totalScore}} <br>
+Congrats for completing the quiz.</b>
+
+<div class="question">
+    <div class="border p-4" *ngFor="let question of quizJSON.questions; let questionIndex=index"> 
+        <div class="qnumber"> 
+           <b> Qno. {{questionIndex+1}}  {{quizJSON.questions[questionIndex].questionText}} </b>
+        </div>  
+        <ol>  
+        <li *ngFor="let item of quizJSON.questions[questionIndex].options; let i=index" 
+        [ngClass]="{'selectedOption':answers[questionIndex]==i,'correctOption':item.correct}">{{item.text}}</li>
+        </ol>
+        Your answer was marked: <b> {{answers[questionIndex] >=0?answers[questionIndex]+1:''}} </b>  
+       <div class="explanation">
+         Explanation: {{quizJSON.questions[questionIndex].explanation}} 
+       </div>
+        
+    </div>
+</div>

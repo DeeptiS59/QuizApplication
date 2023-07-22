@@ -1,0 +1,34 @@
+<div class="container">
+ <div class="card justify-content-between">
+    <div class="img">
+        <img src="https://img.icons8.com/color/96/000000/angularjs.png" alt="Angular" width="50" height="39">
+    </div>
+    <div class="quiz-header">
+        <span>Welcome  {{name}}</span>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" [ngStyle]="{width: currentQuesIndex/((quizJSON?.questions?.length-1)||1)*100+'%'}"
+         [ariaValueNow]="currentQuesIndex/((quizJSON?.questions?.length-1)||1)*100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    <div class="question">
+        <div> 
+            {{currentQuesIndex+1}} {{quizJSON.questions[currentQuesIndex].questionText}}
+            <ol>
+                <li *ngFor="let item of quizJSON.questions[currentQuesIndex].options; let i=index" 
+                [ngClass]="{'selectedOption':answers[currentQuesIndex]==i}"
+                (click)="answerOption(currentQuesIndex,item,i)">{{item.text}}</li>
+            </ol>
+            Your answer was marked: <i>{{answers[currentQuesIndex] >=0?answers[currentQuesIndex]+1:''}}</i>
+            
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <button class="btn" (click)="prevQues()" [disabled]="currentQuesIndex<=0"><i class="fa text-primary fa-chevron-left fa-3x"></i></button>
+
+      <button class="btn" (click)="clearAnswer(currentQuesIndex)"><i class="fa fa-refresh text-primary fa-3x"></i></button>
+
+      <button class="btn" (click)="nextQues()" [disabled]="currentQuesIndex>=quizJSON?.questions?.length-1"><i class="fa text-primary fa-chevron-right fa-3x"></i></button> 
+    </div> 
+    <button class="btn btn-primary btn-lg" (click)="submitQuiz()" >Submit</button>
+ </div>    
+</div>
